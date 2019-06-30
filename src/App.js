@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import beep from './beep.mp3';
+
+
+function Sounds() {
+  return(
+    <div>
+    <audio id="beep" src={ beep }></audio>
+  </div>
+  );
+}
 
 function StartStop(props) {
   if (props.isStopped === true) {
@@ -33,11 +43,14 @@ class App extends Component {
     this.startSessionMode = this.startSessionMode.bind(this);
     this.startBreakMode = this.startBreakMode.bind(this);
     this.determineTimerMode = this.determineTimerMode.bind(this);
+    this.playBeep = this.playBeep.bind(this);
     this.reset = this.reset.bind(this);
-    this.tester = this.tester.bind(this);
   };
 
-  tester = (string) => { console.log(string) }
+  playBeep(){
+    this.audioElement = document.getElementById('beep');
+    this.audioElement.play();
+  };
 
   incrementTime() {
     let tempTimerDispay = this.state.timerDisplay
@@ -46,8 +59,8 @@ class App extends Component {
         this.setState({
           timerDisplay: tempTimerDispay -= 1
         });
+        if(tempTimerDispay === 0) { this.playBeep() }
       } else {
-
 
         this.stopTimer();
 
@@ -148,7 +161,7 @@ class App extends Component {
     this.setState({
       currentMode: "Session",
       timerDisplay: currentSessionLength
-    })
+    });
   }
 
   startBreakMode() {
@@ -156,7 +169,7 @@ class App extends Component {
     this.setState({
       currentMode: "Break",
       timerDisplay: currentBreakLength
-    })
+    });
   }
 
   determineTimerMode() {
@@ -177,6 +190,10 @@ class App extends Component {
       breakLength: 300,
       sessionLength: 1500
     });
+    if(this.audioElement) { 
+      this.audioElement.pause();
+      this.audioElement.load();
+     }
   };
 
   render(){
@@ -214,12 +231,14 @@ class App extends Component {
           <div id="break-label">Break Length:</div> <div id="break-length">{ sessionBreakMinify(this.state.breakLength) }</div><br/>
           <div id="timer-label">{ this.state.currentMode }:</div> <br/>
           <div id="time-left">{ timerDisplay }</div>
+          <Sounds />
         <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
         <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
         <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
         <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+(B)</button>
         <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-(B)</button>
         <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
+        <button className="mylittlebuttons" id="fart"onClick={this.tester}>Fart Noise</button>
       </header>
     </div>
   )};
