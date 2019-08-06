@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import vapor from './vapor.jpg';
 import './App.css';
 import beep from './beep.mp3';
 
@@ -7,8 +7,8 @@ import beep from './beep.mp3';
 function Sounds() {
   return(
     <div>
-    <audio id="beep" src={ beep }></audio>
-  </div>
+      <audio id="beep" src={ beep }></audio>
+    </div>
   );
 }
 
@@ -88,6 +88,11 @@ class App extends Component {
     clearInterval(this.timer);
   }
 
+  // YOU NEED TO REFACTOR ALL THE INCREMENT/DECREMENT FUNCTIONS TO MAKE THEM WAY SMALLER.
+  // CONSIDER ONE MASTER FUNCTION THAT IS CALLED BY THE OTHER FOUR.
+  // 250 lines
+
+  
   incrementSession() {
     if(this.state.isStopped && this.state.sessionLength < 3600) {
       let tempSessionLength = this.state.sessionLength
@@ -119,9 +124,6 @@ class App extends Component {
       }
     }
   };
-
-  // YOU NEED TO REFACTOR ALL THE INCREMENT/DECREMENT FUNCTIONS TO MAKE THEM WAY SMALLER.
-  // CONSIDER ONE MASTER FUNCTION THAT IS CALLED BY THE OTHER FOUR.
 
   incrementBreak() {
     if(this.state.isStopped && this.state.breakLength < 3600) {
@@ -216,30 +218,26 @@ class App extends Component {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="App-main">
+        <img src={vapor} className="vapor-logo" alt="logo" />
         <p>
-          {this.state.headerString}
+          <span id="header-string">{this.state.headerString}</span>
         </p>
-        <a
-          className="App-link"
-          href="http://www.reddit.com/r/squaredcircle"
-          target="_blank"
-          rel="noopener noreferrer"
-        >{this.state.currentMode}</a>
+        <div id="timers-container">
           <div id="session-label">Session Length:</div> <div id="session-length">{ sessionBreakMinify(this.state.sessionLength) }</div><br/>
           <div id="break-label">Break Length:</div> <div id="break-length">{ sessionBreakMinify(this.state.breakLength) }</div><br/>
           <div id="timer-label">{ this.state.currentMode }:</div> <br/>
           <div id="time-left">{ timerDisplay }</div>
           <Sounds />
-        <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
-        <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
-        <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
-        <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+(B)</button>
-        <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-(B)</button>
-        <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
-        <button className="mylittlebuttons" id="fart"onClick={this.tester}>Fart Noise</button>
-      </header>
+          <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
+          <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
+          <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
+          <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+(B)</button>
+          <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-(B)</button>
+          <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
+          <button className="mylittlebuttons" id="fart"onClick={this.tester}>Fart Noise</button>
+        </div>
+      </div>
     </div>
   )};
 }

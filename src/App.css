@@ -2,20 +2,25 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.vapor-logo {
+  height: 32vmax;
+  width: 99vmax;
+  opacity: 0.5;
   pointer-events: none;
 }
 
-.App-header {
+#header-string {
+  font-size: 1.4em;
+}
+
+.App-main {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin);
   color: white;
 }
 
