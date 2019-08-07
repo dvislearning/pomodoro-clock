@@ -19,8 +19,6 @@
   width: 70vmax;
 }
 
-
-
 #main-timer, #set-session-container, #set-break-container {
   display: flex;
   background-color:  #dcc6e0;
@@ -54,16 +52,3 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-  text-decoration: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
