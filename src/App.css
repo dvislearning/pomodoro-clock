@@ -36,6 +36,12 @@
   background-color: #eb7ac9;
 }
 
+.app-button {
+  color: #8f0e91;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
 .App-main {
   background-color: #201e3f;
   min-height: 100vh;

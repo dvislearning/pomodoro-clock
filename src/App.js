@@ -14,9 +14,9 @@ function Sounds() {
 
 function StartStop(props) {
   if (props.isStopped === true) {
-    return <button className="mylittlebuttons" id="start_stop" onClick={props.startTimer}>Start</button>
+    return <button className="app-button" id="start_stop" onClick={props.startTimer}>Start</button>
   } else {
-    return <button className="mylittlebuttons" id="start_stop" onClick={props.stopTimer}>Stop</button>
+    return <button className="app-button" id="start_stop" onClick={props.stopTimer}>Stop</button>
   };
 };
 
@@ -87,11 +87,6 @@ class App extends Component {
     clearInterval(this.timer);
   }
 
-  // YOU NEED TO REFACTOR ALL THE INCREMENT/DECREMENT FUNCTIONS TO MAKE THEM WAY SMALLER.
-  // CONSIDER ONE MASTER FUNCTION THAT IS CALLED BY THE OTHER FOUR.
-  // 250 lines
-
-  
   incrementSession() {
     if(this.state.isStopped && this.state.sessionLength < 3600) {
       let tempSessionLength = this.state.sessionLength
@@ -233,8 +228,8 @@ class App extends Component {
               </div>
             </div>
             <div id="set-session-buttons">
-              <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
-              <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
+              <button className="app-button" id="session-increment" onClick={this.incrementSession}>+</button>
+              <button className="app-button" id="session-decrement"onClick={this.decrementSession}>-</button>
             </div>
           </div>
           
@@ -245,7 +240,7 @@ class App extends Component {
             </div>
             <div id="main-timer-buttons">
               <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
-              <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
+              <button className="app-button" id="reset"onClick={this.reset}>RESET</button>
             </div>
           </div>
 
@@ -257,8 +252,8 @@ class App extends Component {
               </div>
             </div>
             <div id="set-break-buttons">
-              <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+</button>
-              <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-</button>
+              <button className="app-button" id="break-increment" onClick={this.incrementBreak}>+</button>
+              <button className="app-button" id="break-decrement"onClick={this.decrementBreak}>-</button>
             </div>
           </div>
 
