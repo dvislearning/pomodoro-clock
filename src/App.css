@@ -10,17 +10,41 @@
 }
 
 #header-string {
-  font-size: 1.4em;
+  font-size: 1.3em;
+}
+
+#timers-container {
+  display: flex;
+  justify-content: space-around;
+  width: 70vmax;
+}
+
+
+
+#main-timer, #set-session-container, #set-break-container {
+  display: flex;
+  background-color:  #dcc6e0;
+  padding: 5px;
+  flex-direction: column;
+}
+
+#main-timer-clock-label {
+  background-color: #731598;
+}
+
+#set-session-clock-label, #set-break-clock-label {
+  background-color: #eb7ac9;
 }
 
 .App-main {
-  background-color: #282c34;
+  background-color: #201e3f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(12px + 2vmin);
+  font-size: calc(10px + 2vmin);
+  font-weight: 600;
   color: white;
 }
 

@@ -29,8 +29,7 @@ class App extends Component {
       isStopped: true,
       currentMode: 'Session',
       breakLength: 300,
-      sessionLength: 1500,
-      headerString:  "Welcome to the Pomodoro Clock"
+      sessionLength: 1500
     };
 
     this.startTimer = this.startTimer.bind(this);
@@ -221,21 +220,48 @@ class App extends Component {
       <div className="App-main">
         <img src={vapor} className="vapor-logo" alt="logo" />
         <p>
-          <span id="header-string">{this.state.headerString}</span>
+          <span id="header-string">Welcome to the Pomodoro Clock</span>
         </p>
+        <Sounds />
+
         <div id="timers-container">
-          <div id="session-label">Session Length:</div> <div id="session-length">{ sessionBreakMinify(this.state.sessionLength) }</div><br/>
-          <div id="break-label">Break Length:</div> <div id="break-length">{ sessionBreakMinify(this.state.breakLength) }</div><br/>
-          <div id="timer-label">{ this.state.currentMode }:</div> <br/>
-          <div id="time-left">{ timerDisplay }</div>
-          <Sounds />
-          <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
-          <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
-          <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
-          <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+(B)</button>
-          <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-(B)</button>
-          <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
-          <button className="mylittlebuttons" id="fart"onClick={this.tester}>Fart Noise</button>
+
+          <div id="set-session-container">
+            <div id="main-set-sessions">
+              <div id="set-session-clock-label">
+              <div id="session-label">Session Length</div> <div id="session-length">{ sessionBreakMinify(this.state.sessionLength) }</div>
+              </div>
+            </div>
+            <div id="set-session-buttons">
+              <button className="mylittlebuttons" id="session-increment" onClick={this.incrementSession}>+</button>
+              <button className="mylittlebuttons" id="session-decrement"onClick={this.decrementSession}>-</button>
+            </div>
+          </div>
+          
+          <div id="main-timer">
+            <div id="main-timer-clock-label">
+              <div id="timer-label">{ this.state.currentMode } </div>
+              <div id="time-left">{ timerDisplay }</div>
+            </div>
+            <div id="main-timer-buttons">
+              <StartStop isStopped={this.state.isStopped} startTimer={this.startTimer} stopTimer={this.stopTimer}/>
+              <button className="mylittlebuttons" id="reset"onClick={this.reset}>RESET</button>
+            </div>
+          </div>
+
+
+          <div id="set-break-container">
+            <div id="main-set-break">
+              <div id="set-break-clock-label">
+              <div id="break-label">Break Length</div> <div id="break-length">{ sessionBreakMinify(this.state.breakLength) }</div>
+              </div>
+            </div>
+            <div id="set-break-buttons">
+              <button className="mylittlebuttons" id="break-increment" onClick={this.incrementBreak}>+</button>
+              <button className="mylittlebuttons" id="break-decrement"onClick={this.decrementBreak}>-</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
