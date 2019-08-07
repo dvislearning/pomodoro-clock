@@ -95,7 +95,7 @@ class App extends Component {
   incrementSession() {
     if(this.state.isStopped && this.state.sessionLength < 3600) {
       let tempSessionLength = this.state.sessionLength
-      if(this.state.currentMode !== 'break') {
+      if(this.state.currentMode !== 'Break') {
         this.setState({
           sessionLength: tempSessionLength += 60,
           timerDisplay: tempSessionLength
@@ -111,7 +111,7 @@ class App extends Component {
   decrementSession() {
     if(this.state.isStopped && this.state.sessionLength > 60) {
       let tempSessionLength = this.state.sessionLength
-      if(this.state.currentMode !== 'break') {
+      if(this.state.currentMode !== 'Break') {
         this.setState({
           sessionLength: tempSessionLength -= 60,
           timerDisplay: tempSessionLength
@@ -127,7 +127,7 @@ class App extends Component {
   incrementBreak() {
     if(this.state.isStopped && this.state.breakLength < 3600) {
       let tempBreakLength = this.state.breakLength
-      if(this.state.currentMode && this.state.currentMode !== 'session') {
+      if(this.state.currentMode && this.state.currentMode !== 'Session') {
         this.setState({
           breakLength: tempBreakLength += 60,
           timerDisplay: tempBreakLength
@@ -143,7 +143,7 @@ class App extends Component {
   decrementBreak() {
     if(this.state.isStopped && this.state.breakLength > 60) {
       let tempBreakLength = this.state.breakLength
-      if(this.state.currentMode && this.state.currentMode !== 'session') {
+      if(this.state.currentMode && this.state.currentMode !== 'Session') {
         this.setState({
           breakLength: tempBreakLength -= 60,
           timerDisplay: tempBreakLength
@@ -160,7 +160,7 @@ class App extends Component {
   startSessionMode() {
     let currentSessionLength =  this.state.sessionLength
     this.setState({
-      currentMode: "Session",
+      currentMode: 'Session',
       timerDisplay: currentSessionLength
     });
   }
@@ -168,7 +168,7 @@ class App extends Component {
   startBreakMode() {
     let currentBreakLength = this.state.breakLength
     this.setState({
-      currentMode: "Break",
+      currentMode: 'Break',
       timerDisplay: currentBreakLength
     });
   }
